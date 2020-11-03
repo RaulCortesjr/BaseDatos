@@ -1,0 +1,63 @@
+*{
+    text-align: center !important;
+}
+html{
+    background: url(../fondo4.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+table {font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;    margin: 0 auto;     width: 400px; text-align: center;    border-collapse: collapse; }
+    /*para poner la tabla en el centro ponemos auto 0 center */
+th {     font-size: 13px;     font-weight: normal;     padding: 8px;     background: #b9c9fe;
+    border-top: 4px solid #aabcfe;    border-bottom: 1px solid #fff; color: #039; }
+
+td {    padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+    color: #669;    border-top: 1px solid transparent; }
+
+tr:hover td { background: #d0dafd; color: #339; }
+
+#titulo{color:#aabcfe;}
+
+button{
+    width: 99px; 
+    height: 38px;
+    margin: 3px;  
+    text-decoration: none;                     
+    padding: 10px; 
+    font-weight: 600; 
+    color: #ffffff; 
+    border-radius: 6px;
+    border: 2px solid #ffffff
+
+}
+button[class = 'borrar']{
+    background-color: rgb(207, 37, 45) !important; 
+}
+
+button[class = "editar"]{
+    background-color: #669; 
+}
+#menu {
+    background-color: rgb(39, 38, 38);
+}
+#menu th {
+    background-color: rgb(39, 38, 38);
+    color: white;
+    border-top: 0;
+}
+
+#menu td{
+    background-color: rgb(205, 207, 228);
+    color: white;
+}
+ #corona{
+     color: rgb(235, 235, 151); 
+
+ }
