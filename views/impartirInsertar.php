@@ -3,7 +3,6 @@
  require_once('../constants/constants.inc.php');
  require_once('../models/CimpartirBD.php');
  require_once('../funciones.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +19,20 @@
     <h1>Insertar</h1>
     <br /><br />
     <label>Profesor: </label>
-    
+    <select name="profesor" id="profesor">
+        <option value="1" selected>Alejandro</option>
+        <option value="2">Raul</option>
+    </select>
     <br><br>
     <label>Asignatura:</label>
-    
+    <select name="asignatura" id="asignatura">
+       // <?php
+        //for($i = 0; $i < $impartir->seleccionar();$i++)
+       // {?>
+           <option value="1" selected><?php echo ?></option>
+          <?php
+        //}//for?>
+    </select>
     <br /><br />
     <label>Clase: </label>
     <input type="text" name="clase">

@@ -20,7 +20,7 @@
     <h1>INSERTAR</h1>
     <br /><br />
     <label>DNI: </label>
-    <input type="number" name="dni">
+    <input type="text" name="dni">
     <br><br>
     <label>Nombre:</label>
     <input  type="text" name="nombre"  value="" required/>

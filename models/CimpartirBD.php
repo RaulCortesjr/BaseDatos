@@ -13,7 +13,7 @@ class CImpartirBD extends CBD
     public function insertar()
     {
         $sql = "INSERT INTO impartir VALUES (default, $this->profesor_id, 
-        $this->asignatura_id, '$this->clase','$this->horario','$this->duracion)";
+        $this->asignatura_id, '$this->clase','$this->horario','$this->duracion')";
         //die($sql);
         return $this->_ejecutar($sql);
         
@@ -23,7 +23,8 @@ class CImpartirBD extends CBD
     {
         $sql = "UPDATE  impartir 
                 SET profesor_id=$this->profesor_id,
-                asignatura_id='$this->clase',
+                asignatura_id='$this->asignatura_id',
+                clase=$this->clase,
                 horario='$this->horario',
                 duracion='$this->duracion'
                 WHERE impartir_id=$this->impartir_id";
@@ -38,7 +39,12 @@ class CImpartirBD extends CBD
 
     public function seleccionar($impartir_id = 0)
     {
-        $sql = "SELECT * FROM impartir";
+        $sql = "SELECT * ,
+        (SELECT CONCAT(nombre,' ', apellidos) FROM profesores WHERE profesor_id = impartir.profesor_id)
+        as profesor, 
+        (SELECT CONCAT(codigo,' - ', nombre) FROM asignaturas WHERE asignatura_id = impartir.asignatura_id)
+        as asignatura
+        FROM impartir";
 
         if($this->impartir_id != 0)
         {
@@ -52,6 +58,7 @@ class CImpartirBD extends CBD
         if($this->impartir_id != 0){
             $this->profesor_id = $this->filas[0]->profesor_id; //como me devuelve un unico elemento esta en la posicion 0
             $this->asignatura_id = $this->filas[0]->asignatura_id;
+            $this->clase = $this->filas[0]->clase;
             $this->horario = $this->filas[0]->horario;
             $this->duracion = $this->filas[0]->duracion;
         }

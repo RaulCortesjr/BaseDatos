@@ -14,7 +14,7 @@ switch ($opcion)
         $profesor->dni = filter_input(INPUT_POST,'dni');
         $profesor->nombre = filter_input(INPUT_POST,'nombre');
         $profesor->apellidos = filter_input(INPUT_POST,'apellidos');
-        $profesor->telefono = filter_input(INPUT_POST,'tel1');
+        $profesor->telefono = filter_input(INPUT_POST,'telefono');
         $profesor->email = filter_input(INPUT_POST,'email');
         $profesor->direccion = filter_input(INPUT_POST, 'direccion');
         $profesor->cp = filter_input(INPUT_POST, 'cp');
@@ -27,7 +27,7 @@ switch ($opcion)
         $profesor->dni = filter_input(INPUT_POST,'dni');
         $profesor->nombre = filter_input(INPUT_POST,'nombre');
         $profesor->apellidos = filter_input(INPUT_POST,'apellidos');
-        $profesor->telefono = filter_input(INPUT_POST,'tel1');
+        $profesor->telefono = filter_input(INPUT_POST,'telefono');
         $profesor->email = filter_input(INPUT_POST,'email');
         $profesor->direccion = filter_input(INPUT_POST, 'direccion');
         $profesor->cp = filter_input(INPUT_POST, 'cp');

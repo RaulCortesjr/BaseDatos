@@ -25,19 +25,19 @@ $impartir->seleccionar();
     <h1>MODIFICAR</h1>
     <br /><br />
     <label>Profesor: </label>
-    
+    <input type="text" name="profesor" value="<?php echo $impartir->profesor_id;?>">
     <br><br>
     <label>Asignatura:</label>
-    
+    <input type="text" name="asignatura" value="<?php echo $impartir->asignatura_id;?>">
     <br /><br />
     <label>Clase: </label>
-    <input type="text" name="clase">
+    <input type="text" name="clase" value="<?php echo $impartir->clase;?>">
     <br><br>
     <label>Horario: </label>
-    <input type="text" name="horario">
+    <input type="text" name="horario" value="<?php echo $impartir->horario;?>">
     <br><br>
     <label>Duracion: </label>
-    <input type="text" name="duracion">
+    <input type="text" name="duracion" value="<?php echo $impartir->duracion;?>">
     <br><br>
     <input type="submit" name="aceptar">
     <br /><br />

@@ -5,8 +5,6 @@ require_once("../constants/constants.inc.php");
 require_once("../models/CprofesoresBD.php");
 require_once("../models/CasignaturasBD.php");
 $impartir = new CImpartirBD();
-$asignatura = new CAsignaturasBD();
-$profesor = new CProfesoresBD();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +34,8 @@ $profesor = new CProfesoresBD();
         {
         ?>
             <tr>
-                <td><?php echo $fila->profesor_id; ?></td>
-                <td><?php echo $fila->asinatura_id; ?></td>
+                <td><?php echo $fila->profesor; ?></td>
+                <td><?php echo $fila->asignatura; ?></td>
                 <td><?php echo $fila->clase; ?></td>
                 <td><?php echo $fila->horario; ?></td>
                 <td><?php echo $fila->duracion; ?></td>
@@ -45,7 +43,7 @@ $profesor = new CProfesoresBD();
                 <button class = "editar" 
                 onclick = "location.href = 'impartirModificar.php?o=<?php echo MODIFICAR;?>&id=<?php echo $fila->impartir_id;?>'"><i class="fas fa-user-edit"></i></button>
                 <button name="borrar" class="borrar"
-                tag = '../controllers/Cinsertar.php?o=<?php echo BORRAR;?>&id=<?php echo $fila->impartir_id;?>'><i class="fas fa-trash"></i></button>
+                tag = '../controllers/Cimpartir.php?o=<?php echo BORRAR;?>&id=<?php echo $fila->impartir_id;?>'><i class="fas fa-trash"></i></button>
                 </td>
                 <?php
             }//foreach
