@@ -19,19 +19,39 @@
     <h1>Insertar</h1>
     <br /><br />
     <label>Profesor: </label>
+    <?php
+    require_once("../models/CProfesoresBD.php");
+    $profesores = new CProfesoresBD();
+    $profesores->seleccionar();
+    ?>
     <select name="profesor" id="profesor">
-        <option value="1" selected>Alejandro</option>
-        <option value="2">Raul</option>
+    <?php 
+       foreach($profesores->filas as $fila)
+       {
+           ?>
+           <option value="<?php echo $fila->profesor_id; ?>"><?php echo $fila->nombre; ?></option>
+           <?php
+       }
+          ?>
     </select>
     <br><br>
     <label>Asignatura:</label>
+    <?php
+    require_once("../models/CasignaturasBD.php");
+    $asignaturas = new CAsignaturasBD();
+    $asignaturas->seleccionar();
+    ?>
     <select name="asignatura" id="asignatura">
-       // <?php
-        //for($i = 0; $i < $impartir->seleccionar();$i++)
-       // {?>
-           <option value="1" selected><?php echo ?></option>
-          <?php
-        //}//for?>
+       <?php 
+       
+        
+        foreach($asignaturas->filas as $fila)
+        {
+            ?>
+            <option value="<?php echo $fila->asignatura_id; ?>"><?php echo $fila->nombre; ?></option>
+            <?php
+        }
+           ?> 
     </select>
     <br /><br />
     <label>Clase: </label>
@@ -49,3 +69,5 @@
     <br /><br />
     <button type ="cancel" onclick="window.location='../views/impartir.php';return false">Cancelar</button>
     </form>
+    </body>
+    </html>

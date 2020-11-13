@@ -60,9 +60,10 @@ $alumno = new CAlumnosBD();
     } //if
     ?>
             <tr>
-                <td colspan="11"><button style="width: 130px; height: 38px; margin: 3px;  text-decoration: none;
+                <td colspan="6"><button style="width: 130px; height: 38px; margin: 3px;  text-decoration: none;
                                               padding: 10px; font-weight: 600; color: #ffffff; background-color: green; border-radius: 6px; border: 2px solid #ffffff"
-                                onclick= "location.href = 'alumnoInsertar.php'"><i class="fas fa-user-plus"></i></button></td>
+                                onclick= "location.href = 'alumnoInsertar.php'"><i class="fas fa-user-plus"></i></button></td> 
+                <td colspan="5"><a href = "../reports/alumnosPDF.php"><i class="fas fa-file-pdf fa-lg"></i></a></td>              
             </tr>
             <script type="text/javascript">
 var borrar = document.getElementsByName("borrar");

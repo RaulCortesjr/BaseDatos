@@ -35,7 +35,7 @@ class CUsuariosBD extends CBD
         return $this->_ejecutar($sql);
     }
 
-    public function seleccionar($usuario_id = 0)
+    public function seleccionar()
     {
 
         

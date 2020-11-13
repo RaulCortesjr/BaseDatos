@@ -62,9 +62,8 @@
                 if($_SESSION['usuario_id'] != $fila->usuario_id)
                 {
                 ?>
-                <button name="borrar" class="borrar"
-                ><i class="fas fa-trash"></i></button>
-                </td>
+                    <button name="borrar" class="borrar"><i class="fas fa-trash"></i></button>
+                    </td>
                 <?php
                 }
                 ?>
@@ -74,10 +73,18 @@
     } //if
     ?>
             <tr>
-                <td colspan="6"><button style="width: 130px; height: 38px; margin: 3px;  text-decoration: none;
-                                              padding: 10px; font-weight: 600; color: #ffffff; background-color: green; border-radius: 6px; border: 2px solid #ffffff"
-                                onclick= "location.href = 'usuariosInsertar.php'"><i class="fas fa-user-plus"></i></button></td>
+                <td colspan="6">
+                    <?php if($_SESSION['rol']) : ?>
+                    <button style="width: 130px; height: 38px; margin: 3px;  text-decoration: none;
+                                              padding: 10px; font-weight: 600; color: #ffffff; 
+                                              background-color: green; border-radius: 6px; border: 2px solid #ffffff"
+                                              onclick= "location.href = 'usuariosInsertar.php'"><i class="fas fa-user-plus"></i></button>
+                    <a href = "../reports/usuariosPDF.php"><i class="fas fa-file-pdf"></i></a></td>
+                    <?php else: ?>
+                                <a href = "../reports/usuariosPDF.php?id=<?php echo $usuarios->usuario_id; ?>"><i class="fas fa-file-pdf"></i></a></td>
+                    <?php endif; ?>
             </tr>
+
     </table>
 <script type="text/javascript">
 var borrar = document.getElementsByName("borrar");

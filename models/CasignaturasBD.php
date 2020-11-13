@@ -32,10 +32,9 @@ class CAsignaturasBD extends CBD
         return $this->_ejecutar($sql);
     }
 
-    public function seleccionar($alumno_nia = 0)
+    public function seleccionar($asignatura_id = 0)
     {
         $sql = "SELECT * FROM asignaturas";
-
         if($this->asignatura_id != 0)
         {
             $sql .= " WHERE asignatura_id=$this->asignatura_id";
