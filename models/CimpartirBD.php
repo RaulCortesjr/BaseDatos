@@ -37,7 +37,7 @@ class CImpartirBD extends CBD
         return $this->_ejecutar($sql);
     }
 
-    public function seleccionar($impartir_id = 0)
+    public function seleccionar()
     {
         $sql = "SELECT * ,
         (SELECT CONCAT(nombre,' ', apellidos) FROM profesores WHERE profesor_id = impartir.profesor_id)

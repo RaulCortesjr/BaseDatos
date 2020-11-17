@@ -53,9 +53,11 @@ $impartir = new CImpartirBD();
     } //if
     ?>
             <tr>
-                <td colspan="11"><button style="width: 130px; height: 38px; margin: 3px;  text-decoration: none;
+                <td colspan="3"><button style="width: 130px; height: 38px; margin: 3px;  text-decoration: none;
                                               padding: 10px; font-weight: 600; color: #ffffff; background-color: green; border-radius: 6px; border: 2px solid #ffffff"
                                 onclick= "location.href = 'impartirInsertar.php'"><i class="fas fa-user-plus"></i></button></td>
+                <td colspan="1"><a href = "../reports/impartirPDF.php?o=I"><i class="fas fa-file-pdf fa-lg"></i></a></td>  
+                <td colspan="2"><a href = "../reports/impartirPDF.php?o=D"><i class="fas fa-file-download fa-lg"></i></a></td>     
             </tr>
             <script type="text/javascript">
 var borrar = document.getElementsByName("borrar");

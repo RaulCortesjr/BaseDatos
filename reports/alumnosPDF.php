@@ -199,11 +199,13 @@ class alumnosPDF extends FPDF
         }
     }
 }
-
+$opcion = filter_input(INPUT_GET,'o');
 $pdf = new alumnosPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->imprimir();
-$pdf->Output();
+$pdf->Output($opcion,'alumnos.pdf');
+
+
 
 ?>

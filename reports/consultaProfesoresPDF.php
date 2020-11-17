@@ -8,20 +8,16 @@ if(!logueado()){
 }*/
 
 require_once('../plugins/FPDF/fpdf.php');
-require_once('../models/CusuariosBD.php');
+require_once('../models/consultasProfesoresBD.php');
 
 
-class usuariosPDF extends FPDF
+class consultaProfesoresPDF extends FPDF
 {
     var $widths;
     var $aligns;
 
     var $alineacionPropia = array('L','L','L','C');
-    var  $widthsPropio = array(40,70,50,30);
-
-    var $id = 0;
-
-
+    var  $widthsPropio = array(20,30,30,40,20,20,20,10);
 
     function SetWidths($w)
     {
@@ -35,7 +31,7 @@ class usuariosPDF extends FPDF
         $this->aligns=$a;
     }
 
-    function Row($data)
+    function Row($data, $fill)
     {
         //Calculate the height of the row
         $nb=0;
@@ -53,7 +49,7 @@ class usuariosPDF extends FPDF
             $x=$this->GetX();
             $y=$this->GetY();
             //Draw the border
-            $this->Rect($x,$y,$w,$h);
+            $this->Rect($x,$y,$w,$h, $fill);
             //Print the text
             $this->MultiCell($w,5,$data[$i],0,$a);
             //Put the position to the right of the cell
@@ -136,23 +132,32 @@ class usuariosPDF extends FPDF
         $this->SetXY(10,10);
         $this->SetFont('Arial','B', 15);
         $this->SetTextColor(0,68,185); //color listado de usuarios
-        $this->Cell(0,25,'Listado de usuarios',0,0,'C',false);
+        $this->Cell(0,25,'Listado de alumnos',0,0,'C',false);
 
         $this->SetLineWidth(0.3);
         $this->SetFillColor(0,68,185); //color encabezado 
         $this->SetDrawColor(0); //color lineas
         $this->SetTextColor(255);
         
+        
         //Cabecera
         $this->SetFont('Arial', 'B' , 9);
         $this->SetXY(10, 40);
-        $this->Cell($this->widthsPropio[0], 5, 'Usuario', 1, 0, 'C', true); //anchura. altura, nombre, borde, salto de linea, alineacion, 
-        $this->SetXY(50,40);
-        $this->Cell($this->widthsPropio[1], 5, utf8_decode('Contraseña'), 1, 0 , 'C', true);
-        $this->SetXY(120,40);
-        $this->Cell($this->widthsPropio[2],5,'Email', 1, 0, 'C', true);
+        $this->Cell($this->widthsPropio[0], 5, 'Matricula', 1, 0, 'C', true); //anchura. altura, nombre, borde, salto de linea, alineacion, 
+        $this->SetXY(30,40);
+        $this->Cell($this->widthsPropio[1], 5, utf8_decode('Nombre'), 1, 0 , 'C', true);
+        $this->SetXY(60,40);
+        $this->Cell($this->widthsPropio[2],5,utf8_decode('Apellidos'), 1, 0, 'C', true);
+        $this->SetXY(90,40);
+        $this->Cell($this->widthsPropio[3],5,'Email', 1, 0, 'C', true);
+        $this->SetXY(130,40);
+        $this->Cell($this->widthsPropio[4],5,'Telefono', 1, 0, 'C', true);
+        $this->SetXY(150,40);
+        $this->Cell($this->widthsPropio[5],5,'Modalidad', 1, 0, 'C', true);
         $this->SetXY(170,40);
-        $this->Cell($this->widthsPropio[3],5,'Administrador', 1, 0, 'C', true);
+        $this->Cell($this->widthsPropio[6],5,'Presencial', 1, 0, 'C', true);
+        $this->SetXY(190,40);
+        $this->Cell($this->widthsPropio[7],5,'Curso', 1, 0, 'C', true);
         $this->Ln(); //Saltamos una linea
     }
 
@@ -166,40 +171,41 @@ class usuariosPDF extends FPDF
 
     function imprimir()
     {
+        $fill = 0;
         //Filas
         $this->SetTextColor(0);
+        $this->SetFillColor(96,138,202); //color filas,par poder poner color a las filas una si otra no mirar funcion row, a la cual le pasamos fill
         $this->SetFont('Arial','', 9);
         $this->SetAligns($this->alineacionPropia);
         $this->SetWidths($this->widthsPropio);
 
         //Mostrando los datos
-        $usuarios = new CUsuariosBD();
-        $usuarios->usuario_id = $this->id;
-        if ($usuarios->seleccionar())
+        $alumnos = new CAlumnosBD();
+        if ($alumnos->seleccionar())
         {
-            foreach($usuarios->filas as $fila)
+            foreach($alumnos->filas as $fila)
             {
-                $this->Row(array(utf8_decode($fila->usuario),
-                $fila->contrasenia,
-                utf8_decode($fila->email),
-                $fila->rol ? utf8_decode('Si') : 'No'
-            ));
+                $this->Row(array(utf8_decode($fila->n_matricula),
+                $fila->nombre,
+                utf8_decode($fila->apellidos),
+                $fila->email,
+                $fila->telefono,
+                $fila->DAW ? utf8_decode('DAW') : 'DAM',
+                $fila->presencial ? utf8_decode('Presencial') : 'No',
+                $fila->curso
+            ),($fill % 2 == 0 ? 'F' : ''));
+            $fill++;
             }
         }
     }
 }
-
-if($_SERVER['REQUEST_METHOD'] == 'GET') 
-{
-    $id = filter_input(INPUT_GET, 'id');
-}
-
-$pdf = new usuariosPDF();
 $opcion = filter_input(INPUT_GET,'o');
-$pdf->id = $id;
+$pdf = new alumnosPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->imprimir();
-$pdf->Output($opcion,'usuarios.pdf');
+$pdf->Output($opcion,'alumnos.pdf');
+
+
 
 ?>

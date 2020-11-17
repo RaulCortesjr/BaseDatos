@@ -79,9 +79,11 @@
                                               padding: 10px; font-weight: 600; color: #ffffff; 
                                               background-color: green; border-radius: 6px; border: 2px solid #ffffff"
                                               onclick= "location.href = 'usuariosInsertar.php'"><i class="fas fa-user-plus"></i></button>
-                    <a href = "../reports/usuariosPDF.php"><i class="fas fa-file-pdf"></i></a></td>
+                    <a href = "../reports/usuariosPDF.php?o=I"><i class="fas fa-file-pdf"></i></a>
+                    <a href = "../reports/usuariosPDF.php?o=D"><i class="fas fa-file-pdf"></i></a></td>
                     <?php else: ?>
-                                <a href = "../reports/usuariosPDF.php?id=<?php echo $usuarios->usuario_id; ?>"><i class="fas fa-file-pdf"></i></a></td>
+                                <a href = "../reports/usuariosPDF.php?id=<?php echo $usuarios->usuario_id; ?>o=D"><i class="fas fa-file-pdf"></i></a></td>
+                                <a href = "../reports/usuariosPDF.php?id=<?php echo $usuarios->usuario_id; ?>o=I"><i class="fas fa-file-pdf"></i></a></td>
                     <?php endif; ?>
             </tr>
 
