@@ -35,12 +35,6 @@
         <legend>Imparte</legend>
             <label>Clase:</label>
             <input type="text" name="clase" placeholder = "clase" value = " ">
-            <br><br>
-            <label>Horario:</label>
-            <input type="text" name="horario" placeholder = "horario" value = " ">
-            <br><br>
-            <label>Duracion:</label>
-            <input type="text" name="duracion" placeholder = "duracion" value = " ">
     </fieldset>
     <fieldset>
         <legend>Asignaturas:</legend>

@@ -52,7 +52,7 @@ class CBD
         {
             $stmt = $this->con->prepare($query); //Preparamos la consulta
             $stmt->execute(); //Ejecutamos consulta
-
+            
             if($stmt -> rowCount() > 0)
             {
                 $filas = array();
@@ -64,6 +64,7 @@ class CBD
         {
             $this->error = $e->getMessage();
         }
+        //die($filas);
         return $filas; //Devuelve las filas obtenidas.
     }
 
@@ -80,6 +81,7 @@ class CBD
         catch(PDOException $e)
         {
             $this->error = $e->getMessage();
+            die($this->error);
         }
         return $filas; //devuelve las filas afectadas por insert,update o delete
     }
